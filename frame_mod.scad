@@ -4,7 +4,7 @@ extrusion_nut = 6;
 
 frame_x = 450;
 frame_y = 450;
-frame_z = 450;
+frame_z = 500;
 
 module extrusion_x(w=extrusion_size,h=extrusion_size,l=500, n=extrusion_nut, nd=4)
 {
@@ -45,15 +45,16 @@ module extrusion_z(w=extrusion_size,h=extrusion_size,l=500, n=extrusion_nut, nd=
 
 translate([0,0,-10])
 {
-    translate([-frame_x/2,0,0]) extrusion_x(l=frame_x);
+    translate([-frame_x/2,5,0]) extrusion_x(l=frame_x);
+    translate([-frame_x/2,5,frame_z]) extrusion_x(l=frame_x);
     translate([-frame_x/2,frame_y/2 - extrusion_half_size,0]) extrusion_x(l=frame_x);
     translate([-frame_x/2,-frame_y/2 + extrusion_half_size,0]) extrusion_x(l=frame_x);
 
     translate([frame_x/2 + extrusion_half_size,-frame_y/2,0]) extrusion_y(l=frame_y);
     translate([-frame_x/2 - extrusion_half_size,-frame_y/2,0]) extrusion_y(l=frame_y);
 
-    translate([frame_x/2 + extrusion_half_size,+5,extrusion_half_size]) extrusion_z(l=frame_z);
-    translate([-frame_x/2 - extrusion_half_size,+5,extrusion_half_size]) extrusion_z(l=frame_z);
+    translate([frame_x/2 + extrusion_half_size,5,extrusion_half_size]) extrusion_z(l=frame_z);
+    translate([-frame_x/2 - extrusion_half_size,5,extrusion_half_size]) extrusion_z(l=frame_z);
 }
 
 include <box_frame/doc/complete-printer-plus.scad>
